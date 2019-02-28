@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
+Route::get('/', 'Admin\\ArtistsController@index')->middleware('auth');
+Route::resource('/admin/artists', 'Admin\\ArtistsController')->middleware('auth');
+Route::resource('admin/songs', 'Admin\\SongsController')->middleware('auth');
